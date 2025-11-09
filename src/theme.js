@@ -1,0 +1,137 @@
+import { createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#000000',
+      light: '#333333',
+      dark: '#000000',
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#DC143C',
+      light: '#FF4757',
+      dark: '#B01030',
+      contrastText: '#FFFFFF',
+    },
+    error: {
+      main: '#DC3545',
+      contrastText: '#FFFFFF',
+    },
+    success: {
+      main: '#28A745',
+      contrastText: '#FFFFFF',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#6C757D',
+      disabled: '#ADB5BD',
+    },
+    background: {
+      default: '#FFFFFF',
+      paper: '#F8F9FA',
+    },
+    grey: {
+      50: '#F8F9FA',
+      100: '#F1F3F5',
+      200: '#E9ECEF',
+      300: '#DEE2E6',
+      400: '#CED4DA',
+      500: '#ADB5BD',
+      600: '#6C757D',
+      700: '#495057',
+      800: '#343A40',
+      900: '#212529',
+    },
+    divider: '#E5E7EB',
+  },
+  typography: {
+    fontFamily: '"Montserrat", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    h1: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 800,
+      fontSize: '3.5rem',
+      lineHeight: 1.2,
+      letterSpacing: '-0.02em',
+    },
+    h2: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 700,
+      fontSize: '2.75rem',
+      lineHeight: 1.3,
+      letterSpacing: '-0.01em',
+    },
+    h3: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 700,
+      fontSize: '2.25rem',
+      lineHeight: 1.3,
+    },
+    h4: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 600,
+      fontSize: '1.75rem',
+      lineHeight: 1.4,
+    },
+    h5: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 600,
+      fontSize: '1.5rem',
+      lineHeight: 1.4,
+    },
+    h6: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 600,
+      fontSize: '1.25rem',
+      lineHeight: 1.4,
+    },
+    body1: {
+      fontFamily: '"Inter", sans-serif',
+      fontSize: '1rem',
+      lineHeight: 1.6,
+    },
+    body2: {
+      fontFamily: '"Inter", sans-serif',
+      fontSize: '0.875rem',
+      lineHeight: 1.6,
+    },
+    button: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontWeight: 600,
+      textTransform: 'none',
+      letterSpacing: '0.02em',
+    },
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  shadows: [
+    'none',
+    '0px 2px 4px rgba(0, 0, 0, 0.05)',
+    '0px 4px 8px rgba(0, 0, 0, 0.08)',
+    '0px 8px 16px rgba(0, 0, 0, 0.1)',
+    '0px 12px 24px rgba(0, 0, 0, 0.12)',
+    '0px 16px 32px rgba(0, 0, 0, 0.14)',
+    '0px 20px 40px rgba(0, 0, 0, 0.16)',
+    '0px 24px 48px rgba(0, 0, 0, 0.18)',
+    '0px 28px 56px rgba(0, 0, 0, 0.2)',
+    '0px 32px 64px rgba(0, 0, 0, 0.22)',
+    '0px 36px 72px rgba(0, 0, 0, 0.24)',
+    '0px 40px 80px rgba(0, 0, 0, 0.26)',
+    '0px 44px 88px rgba(0, 0, 0, 0.28)',
+    '0px 48px 96px rgba(0, 0, 0, 0.3)',
+    '0px 52px 104px rgba(0, 0, 0, 0.32)',
+    '0px 56px 112px rgba(0, 0, 0, 0.34)',
+    '0px 60px 120px rgba(0, 0, 0, 0.36)',
+    '0px 64px 128px rgba(0, 0, 0, 0.38)',
+    '0px 68px 136px rgba(0, 0, 0, 0.4)',
+    '0px 72px 144px rgba(0, 0, 0, 0.42)',
+    '0px 76px 152px rgba(0, 0, 0, 0.44)',
+    '0px 80px 160px rgba(0, 0, 0, 0.46)',
+    '0px 84px 168px rgba(0, 0, 0, 0.48)',
+    '0px 88px 176px rgba(0, 0, 0, 0.5)',
+  ],
+});
+
+export default theme;
