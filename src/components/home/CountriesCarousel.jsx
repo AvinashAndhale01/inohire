@@ -46,9 +46,9 @@ const CountriesCarousel = () => {
 
   const getItemsPerView = () => {
     if (typeof window !== 'undefined') {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 1024) return 2;
-      return 3;
+      if (window.innerWidth < 640) return 1; // Mobile: show 1 item
+      if (window.innerWidth < 1024) return 2; // Tablet: show 2 items
+      return 3; // Desktop: show 3 items
     }
     return 3;
   };
@@ -57,10 +57,17 @@ const CountriesCarousel = () => {
   const maxIndex = Math.max(0, countries.length - itemsPerView);
 
   useEffect(() => {
-    const handleResize = () => setItemsPerView(getItemsPerView());
+    const handleResize = () => {
+      setItemsPerView(getItemsPerView());
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Reset to first item when items per view changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [itemsPerView]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -71,9 +78,9 @@ const CountriesCarousel = () => {
   };
 
   return (
-    <div style={{ paddingTop: '80px', paddingBottom: '80px', backgroundColor: '#F8F9FA' }}>
-      <Container maxWidth="lg">
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: '#F8F9FA' }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <Typography
             variant="h2"
             className="mb-4"
@@ -90,6 +97,7 @@ const CountriesCarousel = () => {
               color: '#6C757D',
               maxWidth: '700px',
               margin: '0 auto',
+              fontSize: { xs: '0.875rem', md: '1.25rem' },
             }}
           >
             Access top legal talent in key markets worldwide
@@ -101,15 +109,19 @@ const CountriesCarousel = () => {
             <div
               style={{
                 display: 'flex',
-                gap: '16px',
+                gap: itemsPerView === 1 ? '0' : '16px',
                 transition: 'transform 0.5s ease-in-out',
-                transform: `translateX(-${currentIndex * (100 / itemsPerView + 1.6)}%)`,
+                transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
               {countries.map((country, index) => (
                 <div
                   key={index}
-                  style={{ flexShrink: 0, width: `calc(${100 / itemsPerView}% - ${16 * (itemsPerView - 1) / itemsPerView}px)` }}
+                  style={{ 
+                    flexShrink: 0, 
+                    width: itemsPerView === 1 ? '100%' : `calc(${100 / itemsPerView}% - ${16 * (itemsPerView - 1) / itemsPerView}px)`,
+                    paddingRight: itemsPerView === 1 ? '0' : '0'
+                  }}
                 >
                   <Card
                     sx={{
@@ -124,8 +136,8 @@ const CountriesCarousel = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{ p: { xs: 2, md: 3 }, textAlign: 'center' }}>
-                      <div style={{ fontSize: '3rem', marginBottom: '12px' }}>{country.flag}</div>
+                    <CardContent sx={{ p: { xs: 2.5, md: 3 }, textAlign: 'center' }}>
+                      <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>{country.flag}</div>
                       <Typography
                         variant="h5"
                         sx={{
@@ -144,7 +156,7 @@ const CountriesCarousel = () => {
                           lineHeight: 1.6,
                           mb: 2,
                           minHeight: { xs: 'auto', md: '60px' },
-                          fontSize: { xs: '0.875rem', md: '1rem' },
+                          fontSize: { xs: '0.8rem', md: '1rem' },
                         }}
                       >
                         {country.description}
@@ -159,7 +171,8 @@ const CountriesCarousel = () => {
                           borderColor: '#DC143C',
                           color: '#DC143C',
                           fontWeight: 600,
-                          fontSize: { xs: '0.75rem', md: '0.875rem' },
+                          fontSize: { xs: '0.7rem', md: '0.875rem' },
+                          py: { xs: 0.5, md: 0.75 },
                           '&:hover': {
                             borderColor: '#B01030',
                             backgroundColor: 'rgba(220, 20, 60, 0.05)',
@@ -175,13 +188,15 @@ const CountriesCarousel = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Always visible */}
           <IconButton
             onClick={handlePrev}
             disabled={currentIndex === 0}
             sx={{
               position: 'absolute',
               left: { xs: '0', md: '-20px' },
+              width: { xs: '36px', md: '40px' },
+              height: { xs: '36px', md: '40px' },
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: '#FFFFFF',
@@ -193,10 +208,11 @@ const CountriesCarousel = () => {
               },
               '&:disabled': {
                 opacity: 0.3,
+                backgroundColor: '#F5F5F5',
               },
             }}
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </IconButton>
 
           <IconButton
@@ -205,6 +221,8 @@ const CountriesCarousel = () => {
             sx={{
               position: 'absolute',
               right: { xs: '0', md: '-20px' },
+              width: { xs: '36px', md: '40px' },
+              height: { xs: '36px', md: '40px' },
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: '#FFFFFF',
@@ -216,14 +234,15 @@ const CountriesCarousel = () => {
               },
               '&:disabled': {
                 opacity: 0.3,
+                backgroundColor: '#F5F5F5',
               },
             }}
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </IconButton>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '32px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '24px' }}>
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}

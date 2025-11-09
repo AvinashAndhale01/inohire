@@ -51,50 +51,74 @@ const theme = createTheme({
     h1: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 800,
-      fontSize: '3.5rem',
+      fontSize: '1.75rem', // Mobile first
       lineHeight: 1.2,
       letterSpacing: '-0.02em',
+      '@media (min-width:768px)': {
+        fontSize: '3.5rem', // Desktop
+      },
     },
     h2: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 700,
-      fontSize: '2.75rem',
+      fontSize: '1.5rem', // Mobile first
       lineHeight: 1.3,
       letterSpacing: '-0.01em',
+      '@media (min-width:768px)': {
+        fontSize: '2.75rem', // Desktop
+      },
     },
     h3: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 700,
-      fontSize: '2.25rem',
+      fontSize: '1.25rem', // Mobile first
       lineHeight: 1.3,
+      '@media (min-width:768px)': {
+        fontSize: '2.25rem', // Desktop
+      },
     },
     h4: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 600,
-      fontSize: '1.75rem',
+      fontSize: '1.125rem', // Mobile first
       lineHeight: 1.4,
+      '@media (min-width:768px)': {
+        fontSize: '1.75rem', // Desktop
+      },
     },
     h5: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 600,
-      fontSize: '1.5rem',
+      fontSize: '1rem', // Mobile first
       lineHeight: 1.4,
+      '@media (min-width:768px)': {
+        fontSize: '1.5rem', // Desktop
+      },
     },
     h6: {
       fontFamily: '"Montserrat", sans-serif',
       fontWeight: 600,
-      fontSize: '1.25rem',
+      fontSize: '0.875rem', // Mobile first
       lineHeight: 1.4,
+      '@media (min-width:768px)': {
+        fontSize: '1.25rem', // Desktop
+      },
     },
     body1: {
       fontFamily: '"Inter", sans-serif',
-      fontSize: '1rem',
+      fontSize: '0.875rem', // Mobile first
       lineHeight: 1.6,
+      '@media (min-width:768px)': {
+        fontSize: '1rem', // Desktop
+      },
     },
     body2: {
       fontFamily: '"Inter", sans-serif',
-      fontSize: '0.875rem',
+      fontSize: '0.75rem', // Mobile first
       lineHeight: 1.6,
+      '@media (min-width:768px)': {
+        fontSize: '0.875rem', // Desktop
+      },
     },
     button: {
       fontFamily: '"Montserrat", sans-serif',

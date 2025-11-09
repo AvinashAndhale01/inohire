@@ -38,9 +38,9 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '80px', paddingBottom: '80px', backgroundColor: 'white' }}>
-      <Container maxWidth="lg">
-        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: 'white' }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <Typography
             variant="h2"
             className="mb-4"
@@ -63,15 +63,15 @@ const WhyChooseUs = () => {
           </Typography>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
           {reasons.map((reason, index) => (
             <div key={index}>
               <Stack spacing={2}>
                 <div
                   style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '16px',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -89,6 +89,7 @@ const WhyChooseUs = () => {
                   sx={{
                     fontWeight: 600,
                     fontFamily: 'Montserrat, sans-serif',
+                    fontSize: { xs: '1rem', md: '1.25rem' },
                   }}
                 >
                   {reason.title}
@@ -107,7 +108,7 @@ const WhyChooseUs = () => {
           ))}
         </div>
 
-        <div style={{ marginTop: '64px', textAlign: 'center' }}>
+        <div style={{ marginTop: '48px', textAlign: 'center' }}>
           <div
             style={{
               position: 'relative',
@@ -119,9 +120,9 @@ const WhyChooseUs = () => {
               background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
             }}
           >
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
               <div style={{ textAlign: 'center', color: 'white' }}>
-                <Typography variant="h4" sx={{ fontWeight: 600, mb: 2 }}>
+                <Typography variant="h4" sx={{ fontWeight: 600, mb: 2, fontSize: { xs: '1.25rem', md: '2rem' } }}>
                   See How We Hire
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.7)', mb: 3 }}>
@@ -129,8 +130,8 @@ const WhyChooseUs = () => {
                 </Typography>
                 <div
                   style={{
-                    width: '80px',
-                    height: '80px',
+                    width: '64px',
+                    height: '64px',
                     borderRadius: '50%',
                     backgroundColor: '#DC143C',
                     display: 'flex',

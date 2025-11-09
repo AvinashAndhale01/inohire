@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -35,9 +36,9 @@ const ServicesOverview = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: 'white' }}>
+    <div style={{ paddingTop: '40px', paddingBottom: '40px', backgroundColor: 'white' }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <Typography
             variant="h2"
             sx={{
@@ -62,7 +63,7 @@ const ServicesOverview = () => {
           </Typography>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
           {services.map((service, index) => (
             <Card
               key={index}
@@ -85,9 +86,9 @@ const ServicesOverview = () => {
               <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
                 <div
                   className="service-icon mb-4 transition-all duration-300"
-                  style={{ color: '#000000', marginBottom: '12px' }}
+                  style={{ color: '#000000', marginBottom: '12px', fontSize: '0' }}
                 >
-                  {service.icon}
+                  {React.cloneElement(service.icon, { size: window.innerWidth < 768 ? 32 : 40 })}
                 </div>
                 <Typography
                   variant="h5"
@@ -131,7 +132,7 @@ const ServicesOverview = () => {
           ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+        <div style={{ textAlign: 'center', marginTop: '24px' }}>
           <Button
             variant="outlined"
             component={Link}

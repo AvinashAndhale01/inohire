@@ -38,7 +38,7 @@ const HeroSection = () => {
 
       <Container
         maxWidth="xl"
-        sx={{ position: "relative", zIndex: 10, py: { xs: 4, md: 12 }, px: { xs: 1.5, sm: 3 } }}
+        sx={{ position: "relative", zIndex: 10, py: { xs: 6, sm: 8, md: 12 }, px: { xs: 2, sm: 3 } }}
       >
         <style>{`
           @media (min-width: 1024px) {
@@ -79,10 +79,10 @@ const HeroSection = () => {
             <Stack
               direction="row"
               spacing={1}
-              sx={{ mb: { xs: 2, md: 4 }, flexWrap: "wrap", gap: 0.75 }}
+              sx={{ mb: { xs: 2, md: 4 }, flexWrap: "wrap", gap: { xs: 0.5, md: 0.75 } }}
             >
               <Chip
-                icon={<Shield size={14} />}
+                icon={<Shield size={12} />}
                 label="GDPR Compliant"
                 sx={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -90,12 +90,15 @@ const HeroSection = () => {
                   fontWeight: 500,
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
-                  fontSize: { xs: "0.75rem", md: "0.875rem" },
-                  height: { xs: "24px", md: "32px" },
+                  fontSize: { xs: "0.7rem", md: "0.875rem" },
+                  height: { xs: "22px", md: "32px" },
+                  "& .MuiChip-icon": {
+                    fontSize: { xs: "12px", md: "14px" }
+                  }
                 }}
               />
               <Chip
-                icon={<Award size={14} />}
+                icon={<Award size={12} />}
                 label="ISO Certified"
                 sx={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -103,15 +106,18 @@ const HeroSection = () => {
                   fontWeight: 500,
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
-                  fontSize: { xs: "0.75rem", md: "0.875rem" },
-                  height: { xs: "24px", md: "32px" },
+                  fontSize: { xs: "0.7rem", md: "0.875rem" },
+                  height: { xs: "22px", md: "32px" },
+                  "& .MuiChip-icon": {
+                    fontSize: { xs: "12px", md: "14px" }
+                  }
                 }}
               />
             </Stack>
 
             <Stack
               direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 1.5, sm: 2 }}
+              spacing={{ xs: 1.25, sm: 2 }}
               sx={{ mt: 1, width: "100%" }}
             >
               <Button
@@ -123,9 +129,9 @@ const HeroSection = () => {
                   backgroundColor: "#DC143C",
                   color: "#FFFFFF",
                   fontWeight: 600,
-                  px: { xs: 2, md: 4 },
-                  py: { xs: 1, md: 1.5 },
-                  fontSize: { xs: "0.875rem", md: "1.1rem" },
+                  px: { xs: 3, md: 4 },
+                  py: { xs: 1.25, md: 1.5 },
+                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.1rem" },
                   borderRadius: "8px",
                   "&:hover": {
                     backgroundColor: "#B01030",
@@ -146,9 +152,9 @@ const HeroSection = () => {
                   borderColor: "#FFFFFF",
                   color: "#FFFFFF",
                   fontWeight: 600,
-                  px: { xs: 2, md: 4 },
-                  py: { xs: 1, md: 1.5 },
-                  fontSize: { xs: "0.875rem", md: "1.1rem" },
+                  px: { xs: 3, md: 4 },
+                  py: { xs: 1.25, md: 1.5 },
+                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1.1rem" },
                   borderRadius: "8px",
                   "&:hover": {
                     borderColor: "#DC143C",

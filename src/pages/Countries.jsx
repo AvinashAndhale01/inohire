@@ -17,21 +17,21 @@ const Countries = () => {
 
   return (
     <div>
-      <div style={{ paddingTop: '80px', paddingBottom: '80px', background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)' }}>
-        <Container maxWidth="lg">
+      <div style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)' }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
           <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 800, color: 'white', textAlign: 'center' }}>
             Global <span style={{ color: '#DC143C' }}>Coverage</span>
           </Typography>
         </Container>
       </div>
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 12 }, px: { xs: 2, sm: 3 } }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
           {countries.map((country, index) => (
             <Card key={index} sx={{ height: '100%', borderRadius: '16px', border: '2px solid #E5E7EB', transition: 'all 0.3s ease', '&:hover': { borderColor: '#DC143C', transform: 'translateY(-8px)', boxShadow: '0 16px 32px rgba(0,0,0,0.14)' } }}>
-              <CardContent sx={{ p: { xs: 3, md: 4 }, textAlign: 'center' }}>
-                <div style={{ fontSize: '3.75rem', marginBottom: '16px' }}>{country.flag}</div>
-                <Typography variant="h5" sx={{ fontWeight: 600, mb: 1.5 }}>{country.name}</Typography>
-                <Typography variant="body2" sx={{ color: '#6C757D', mb: 2 }}>{country.description}</Typography>
+              <CardContent sx={{ p: { xs: 2.5, md: 4 }, textAlign: 'center' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>{country.flag}</div>
+                <Typography variant="h5" sx={{ fontWeight: 600, mb: 1.5, fontSize: { xs: '1.125rem', md: '1.5rem' } }}>{country.name}</Typography>
+                <Typography variant="body2" sx={{ color: '#6C757D', mb: 2, fontSize: { xs: '0.8rem', md: '0.875rem' } }}>{country.description}</Typography>
                 <Button component={Link} to="/contact" variant="outlined" sx={{ borderColor: '#DC143C', color: '#DC143C' }}>
                   Learn More
                 </Button>

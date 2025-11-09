@@ -60,7 +60,7 @@ const Navbar = () => {
         }}
       >
         <Container maxWidth="xl">
-          <Toolbar className="py-2" disableGutters>
+          <Toolbar className="py-1 md:py-2" disableGutters>
             <Link
               to="/"
               onClick={handleNavClick}
@@ -75,6 +75,7 @@ const Navbar = () => {
                   fontWeight: 800,
                   color: "#000000",
                   letterSpacing: "-0.02em",
+                  fontSize: { xs: "1.125rem", md: "1.5rem" },
                 }}
               >
                 Inno <span style={{ color: "#DC143C" }}>Hire</span>
@@ -101,8 +102,8 @@ const Navbar = () => {
                     color:
                       location.pathname === link.path ? "#DC143C" : "#000000",
                     fontWeight: location.pathname === link.path ? 600 : 500,
-                    fontSize: "0.95rem",
-                    px: 2,
+                    fontSize: { xs: "0.875rem", md: "0.95rem" },
+                    px: { xs: 1.5, md: 2 },
                     "&:hover": {
                       color: "#DC143C",
                       backgroundColor: "rgba(220, 20, 60, 0.05)",
@@ -118,12 +119,13 @@ const Navbar = () => {
                 to="/contact"
                 onClick={handleNavClick}
                 sx={{
-                  ml: 2,
+                  ml: { xs: 1, md: 2 },
                   backgroundColor: "#DC143C",
                   color: "#FFFFFF",
                   fontWeight: 600,
-                  px: 3,
-                  py: 1,
+                  px: { xs: 2, md: 3 },
+                  py: { xs: 0.75, md: 1 },
+                  fontSize: { xs: "0.8rem", md: "1rem" },
                   borderRadius: "8px",
                   "&:hover": {
                     backgroundColor: "#B01030",
@@ -156,12 +158,12 @@ const Navbar = () => {
         onClose={handleDrawerToggle}
         sx={{
           "& .MuiDrawer-paper": {
-            width: "280px",
+            width: { xs: "260px", sm: "280px" },
             backgroundColor: "#FFFFFF",
           },
         }}
       >
-        <Stack spacing={0} sx={{ p: 3, pt: 3 }}>
+        <Stack spacing={0} sx={{ p: { xs: 2, sm: 3 }, pt: { xs: 2, sm: 3 } }}>
           <div
             style={{
               display: "flex",
@@ -172,7 +174,11 @@ const Navbar = () => {
           >
             <Typography
               variant="h6"
-              sx={{ fontFamily: "Montserrat, sans-serif", fontWeight: 700 }}
+              sx={{ 
+                fontFamily: "Montserrat, sans-serif", 
+                fontWeight: 700,
+                fontSize: { xs: "1rem", sm: "1.25rem" }
+              }}
             >
               Inno<span style={{ color: "#DC143C" }}>Hire</span>
             </Typography>
@@ -190,9 +196,9 @@ const Navbar = () => {
                 justifyContent: "flex-start",
                 color: location.pathname === link.path ? "#DC143C" : "#000000",
                 fontWeight: location.pathname === link.path ? 600 : 500,
-                fontSize: "1rem",
-                py: 1.5,
-                px: 2,
+                fontSize: { xs: "0.875rem", sm: "1rem" },
+                py: { xs: 1.25, sm: 1.5 },
+                px: { xs: 1.5, sm: 2 },
                 borderRadius: "8px",
                 "&:hover": {
                   color: "#DC143C",
@@ -213,7 +219,8 @@ const Navbar = () => {
               backgroundColor: "#DC143C",
               color: "#FFFFFF",
               fontWeight: 600,
-              py: 1.5,
+              py: { xs: 1.25, sm: 1.5 },
+              fontSize: { xs: "0.875rem", sm: "1rem" },
               borderRadius: "8px",
               "&:hover": {
                 backgroundColor: "#B01030",

@@ -35,9 +35,9 @@ const TrustStats = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: '#F8F9FA' }}>
+    <div ref={sectionRef} style={{ paddingTop: '40px', paddingBottom: '40px', backgroundColor: '#F8F9FA' }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '20px' }}>
           {stats.map((stat, index) => (
             <StatCard
               key={index}

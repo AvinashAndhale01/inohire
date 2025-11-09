@@ -1,3 +1,4 @@
+import React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -49,8 +50,8 @@ const Services = () => {
 
   return (
     <div>
-      <div style={{ paddingTop: '80px', paddingBottom: '80px', background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)' }}>
-        <Container maxWidth="lg">
+      <div style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)' }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
           <div style={{ textAlign: 'center' }}>
             <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 800, fontFamily: 'Montserrat, sans-serif', color: 'white', mb: 3 }}>
               Our Legal Hiring <span style={{ color: '#DC143C' }}>Services</span>
@@ -62,8 +63,8 @@ const Services = () => {
         </Container>
       </div>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 12 }, px: { xs: 2, sm: 3 } }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
           {services.map((service, index) => (
             <Card
               key={index}
@@ -79,19 +80,21 @@ const Services = () => {
                 },
               }}
             >
-              <CardContent sx={{ p: { xs: 3, md: 4 } }}>
-                <div style={{ color: '#DC143C', marginBottom: '16px' }}>{service.icon}</div>
-                <Typography variant="h5" sx={{ fontWeight: 600, fontFamily: 'Montserrat, sans-serif', mb: 2 }}>
+              <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
+                <div style={{ color: '#DC143C', marginBottom: '12px', fontSize: '0' }}>
+                  {React.cloneElement(service.icon, { size: window.innerWidth < 768 ? 36 : 48 })}
+                </div>
+                <Typography variant="h5" sx={{ fontWeight: 600, fontFamily: 'Montserrat, sans-serif', mb: 2, fontSize: { xs: '1.125rem', md: '1.5rem' } }}>
                   {service.title}
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#6C757D', lineHeight: 1.7, mb: 3 }}>
+                <Typography variant="body1" sx={{ color: '#6C757D', lineHeight: 1.7, mb: 3, fontSize: { xs: '0.875rem', md: '1rem' } }}>
                   {service.description}
                 </Typography>
                 <Stack spacing={1} sx={{ mb: 3 }}>
                   {service.features.map((feature, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#DC143C', flexShrink: 0 }} />
-                      <Typography variant="body2" sx={{ color: '#495057' }}>{feature}</Typography>
+                      <Typography variant="body2" sx={{ color: '#495057', fontSize: { xs: '0.8rem', md: '0.875rem' } }}>{feature}</Typography>
                     </div>
                   ))}
                 </Stack>
@@ -116,8 +119,8 @@ const Services = () => {
           ))}
         </div>
 
-        <div style={{ marginTop: '64px', textAlign: 'center' }}>
-          <Typography variant="h4" sx={{ fontWeight: 600, mb: 3 }}>
+        <div style={{ marginTop: '48px', textAlign: 'center' }}>
+          <Typography variant="h4" sx={{ fontWeight: 600, mb: 3, fontSize: { xs: '1.25rem', md: '1.75rem' } }}>
             Ready to find your perfect legal talent?
           </Typography>
           <Button
@@ -129,9 +132,9 @@ const Services = () => {
               backgroundColor: '#DC143C',
               color: '#FFFFFF',
               fontWeight: 600,
-              px: 5,
-              py: 1.5,
-              fontSize: '1.1rem',
+              px: { xs: 3, md: 5 },
+              py: { xs: 1.25, md: 1.5 },
+              fontSize: { xs: '0.95rem', md: '1.1rem' },
               borderRadius: '8px',
               '&:hover': {
                 backgroundColor: '#B01030',

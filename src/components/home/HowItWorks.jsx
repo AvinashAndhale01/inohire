@@ -25,9 +25,9 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: 'white' }}>
+    <div style={{ paddingTop: '40px', paddingBottom: '40px', backgroundColor: 'white' }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <Typography
             variant="h2"
             sx={{
@@ -52,7 +52,7 @@ const HowItWorks = () => {
           </Typography>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px', position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', position: 'relative' }}>
           <div style={{ display: 'none', position: 'absolute', top: '96px', left: 0, right: 0, height: '4px', background: 'linear-gradient(to right, #DC143C, #FF4757, #DC143C)', opacity: 0.2, zIndex: 0 }} />
 
           {steps.map((step, index) => (
@@ -60,8 +60,8 @@ const HowItWorks = () => {
               <div style={{ position: 'relative', display: 'inline-block', marginBottom: '16px' }}>
                 <div
                   style={{
-                    width: '72px',
-                    height: '72px',
+                    width: '64px',
+                    height: '64px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -72,18 +72,18 @@ const HowItWorks = () => {
                   }}
                 >
                   <div style={{ color: 'white' }}>
-                    <MessageSquare size={32} />
-                    <Search size={32} />
-                    <UserCheck size={32} />
+                    <MessageSquare size={28} />
+                    <Search size={28} />
+                    <UserCheck size={28} />
                   </div>
                 </div>
                 <div
                   style={{
                     position: 'absolute',
-                    top: '-12px',
-                    right: '-12px',
-                    width: '48px',
-                    height: '48px',
+                    top: '-10px',
+                    right: '-10px',
+                    width: '40px',
+                    height: '40px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -97,7 +97,7 @@ const HowItWorks = () => {
                     sx={{
                       fontWeight: 800,
                       fontFamily: 'Montserrat, sans-serif',
-                      fontSize: { xs: '0.875rem', md: '1.25rem' },
+                      fontSize: { xs: '0.75rem', md: '1.25rem' },
                     }}
                   >
                     {step.number}
