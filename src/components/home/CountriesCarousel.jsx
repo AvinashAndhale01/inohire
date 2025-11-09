@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -44,8 +44,23 @@ const CountriesCarousel = () => {
     },
   ];
 
-  const itemsPerView = 3;
+  const getItemsPerView = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
+    }
+    return 3;
+  };
+
+  const [itemsPerView, setItemsPerView] = useState(getItemsPerView());
   const maxIndex = Math.max(0, countries.length - itemsPerView);
+
+  useEffect(() => {
+    const handleResize = () => setItemsPerView(getItemsPerView());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -81,20 +96,20 @@ const CountriesCarousel = () => {
           </Typography>
         </div>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', padding: '0 40px' }}>
           <div style={{ overflow: 'hidden' }}>
             <div
               style={{
                 display: 'flex',
-                gap: '24px',
+                gap: '16px',
                 transition: 'transform 0.5s ease-in-out',
-                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                transform: `translateX(-${currentIndex * (100 / itemsPerView + 1.6)}%)`,
               }}
             >
               {countries.map((country, index) => (
                 <div
                   key={index}
-                  style={{ flexShrink: 0, width: `calc(${100 / itemsPerView}% - 16px)` }}
+                  style={{ flexShrink: 0, width: `calc(${100 / itemsPerView}% - ${16 * (itemsPerView - 1) / itemsPerView}px)` }}
                 >
                   <Card
                     sx={{
@@ -109,14 +124,15 @@ const CountriesCarousel = () => {
                       },
                     }}
                   >
-                    <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                      <div style={{ fontSize: '3.75rem', marginBottom: '16px' }}>{country.flag}</div>
+                    <CardContent sx={{ p: { xs: 2, md: 3 }, textAlign: 'center' }}>
+                      <div style={{ fontSize: '3rem', marginBottom: '12px' }}>{country.flag}</div>
                       <Typography
                         variant="h5"
                         sx={{
                           fontWeight: 600,
                           fontFamily: 'Montserrat, sans-serif',
-                          mb: 1.5,
+                          mb: 1,
+                          fontSize: { xs: '1.25rem', md: '1.5rem' },
                         }}
                       >
                         {country.name}
@@ -127,7 +143,8 @@ const CountriesCarousel = () => {
                           color: '#6C757D',
                           lineHeight: 1.6,
                           mb: 2,
-                          minHeight: '60px',
+                          minHeight: { xs: 'auto', md: '60px' },
+                          fontSize: { xs: '0.875rem', md: '1rem' },
                         }}
                       >
                         {country.description}
@@ -136,11 +153,13 @@ const CountriesCarousel = () => {
                         component={Link}
                         to="/countries"
                         variant="outlined"
-                        startIcon={<MapPin size={18} />}
+                        startIcon={<MapPin size={16} />}
+                        size="small"
                         sx={{
                           borderColor: '#DC143C',
                           color: '#DC143C',
                           fontWeight: 600,
+                          fontSize: { xs: '0.75rem', md: '0.875rem' },
                           '&:hover': {
                             borderColor: '#B01030',
                             backgroundColor: 'rgba(220, 20, 60, 0.05)',
@@ -162,11 +181,12 @@ const CountriesCarousel = () => {
             disabled={currentIndex === 0}
             sx={{
               position: 'absolute',
-              left: '-20px',
+              left: { xs: '0', md: '-20px' },
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: '#FFFFFF',
               boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+              zIndex: 10,
               '&:hover': {
                 backgroundColor: '#DC143C',
                 color: '#FFFFFF',
@@ -176,7 +196,7 @@ const CountriesCarousel = () => {
               },
             }}
           >
-            <ChevronLeft />
+            <ChevronLeft size={20} />
           </IconButton>
 
           <IconButton
@@ -184,11 +204,12 @@ const CountriesCarousel = () => {
             disabled={currentIndex >= maxIndex}
             sx={{
               position: 'absolute',
-              right: '-20px',
+              right: { xs: '0', md: '-20px' },
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: '#FFFFFF',
               boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+              zIndex: 10,
               '&:hover': {
                 backgroundColor: '#DC143C',
                 color: '#FFFFFF',
@@ -198,7 +219,7 @@ const CountriesCarousel = () => {
               },
             }}
           >
-            <ChevronRight />
+            <ChevronRight size={20} />
           </IconButton>
         </div>
 

@@ -143,7 +143,7 @@ const Navbar = () => {
                 color: "#000000",
               }}
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              <Menu size={24} />
             </IconButton>
           </Toolbar>
         </Container>
@@ -161,7 +161,25 @@ const Navbar = () => {
           },
         }}
       >
-        <Stack spacing={0} sx={{ p: 3, pt: 10 }}>
+        <Stack spacing={0} sx={{ p: 3, pt: 3 }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "24px",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{ fontFamily: "Montserrat, sans-serif", fontWeight: 700 }}
+            >
+              Inno<span style={{ color: "#DC143C" }}>Hire</span>
+            </Typography>
+            <IconButton onClick={handleDrawerToggle} sx={{ color: "#000000" }}>
+              <X size={24} />
+            </IconButton>
+          </div>
           {navLinks.map((link) => (
             <Button
               key={link.path}

@@ -15,9 +15,9 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
       <Navbar />
-      <main style={{ flexGrow: 1 }}>
+      <main style={{ flexGrow: 1, overflowX: 'hidden', width: '100%', maxWidth: '100vw' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />

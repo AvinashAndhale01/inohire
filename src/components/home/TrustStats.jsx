@@ -35,9 +35,9 @@ const TrustStats = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} style={{ paddingTop: '64px', paddingBottom: '64px', backgroundColor: '#F8F9FA' }}>
-      <Container maxWidth="lg">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+    <div ref={sectionRef} style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: '#F8F9FA' }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
           {stats.map((stat, index) => (
             <StatCard
               key={index}
@@ -86,7 +86,7 @@ const StatCard = ({ value, suffix, label, isVisible, delay }) => {
           fontWeight: 800,
           color: '#DC143C',
           fontFamily: 'Montserrat, sans-serif',
-          fontSize: { xs: '3rem', md: '4rem' },
+          fontSize: { xs: '2rem', md: '4rem' },
         }}
       >
         {count}
@@ -97,7 +97,8 @@ const StatCard = ({ value, suffix, label, isVisible, delay }) => {
         sx={{
           color: '#6C757D',
           fontWeight: 600,
-          mt: 1,
+          mt: { xs: 0.5, md: 1 },
+          fontSize: { xs: '0.875rem', md: '1.25rem' },
         }}
       >
         {label}

@@ -35,15 +35,16 @@ const ServicesOverview = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '80px', paddingBottom: '80px', backgroundColor: 'white' }}>
-      <Container maxWidth="lg">
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: 'white' }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <Typography
             variant="h2"
-            className="mb-4"
             sx={{
               fontWeight: 700,
               fontFamily: 'Montserrat, sans-serif',
+              fontSize: { xs: '1.75rem', md: '2.75rem' },
+              mb: { xs: 1.5, md: 2 },
             }}
           >
             Our Services
@@ -54,13 +55,14 @@ const ServicesOverview = () => {
               color: '#6C757D',
               maxWidth: '700px',
               margin: '0 auto',
+              fontSize: { xs: '0.875rem', md: '1.25rem' },
             }}
           >
             Comprehensive legal recruitment solutions tailored to your organization's unique needs
           </Typography>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
           {services.map((service, index) => (
             <Card
               key={index}
@@ -80,10 +82,10 @@ const ServicesOverview = () => {
                 },
               }}
             >
-              <CardContent sx={{ p: 4 }}>
+              <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
                 <div
                   className="service-icon mb-4 transition-all duration-300"
-                  style={{ color: '#000000' }}
+                  style={{ color: '#000000', marginBottom: '12px' }}
                 >
                   {service.icon}
                 </div>
@@ -92,7 +94,8 @@ const ServicesOverview = () => {
                   sx={{
                     fontWeight: 600,
                     fontFamily: 'Montserrat, sans-serif',
-                    mb: 1.5,
+                    mb: 1,
+                    fontSize: { xs: '1.125rem', md: '1.5rem' },
                   }}
                 >
                   {service.title}
@@ -103,6 +106,7 @@ const ServicesOverview = () => {
                     color: '#6C757D',
                     lineHeight: 1.7,
                     mb: 2,
+                    fontSize: { xs: '0.875rem', md: '1rem' },
                   }}
                 >
                   {service.description}
@@ -110,10 +114,11 @@ const ServicesOverview = () => {
                 <Button
                   component={Link}
                   to="/services"
-                  endIcon={<ArrowRight size={18} />}
+                  endIcon={<ArrowRight size={16} />}
                   sx={{
                     color: service.color,
                     fontWeight: 600,
+                    fontSize: { xs: '0.75rem', md: '0.875rem' },
                     '&:hover': {
                       backgroundColor: `${service.color}10`,
                     },
@@ -126,18 +131,18 @@ const ServicesOverview = () => {
           ))}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '48px' }}>
+        <div style={{ textAlign: 'center', marginTop: '32px' }}>
           <Button
             variant="outlined"
             component={Link}
             to="/services"
-            size="large"
             sx={{
               borderColor: '#000000',
               color: '#000000',
               fontWeight: 600,
-              px: 4,
-              py: 1.5,
+              px: { xs: 3, md: 4 },
+              py: { xs: 1, md: 1.5 },
+              fontSize: { xs: '0.875rem', md: '1rem' },
               borderRadius: '8px',
               '&:hover': {
                 borderColor: '#DC143C',

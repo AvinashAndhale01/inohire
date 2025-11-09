@@ -8,7 +8,7 @@ import WhyChooseUs from '../components/home/WhyChooseUs';
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <HeroSection />
       <TrustStats />
       <ServicesOverview />

@@ -25,15 +25,16 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '80px', paddingBottom: '80px', backgroundColor: 'white' }}>
-      <Container maxWidth="lg">
-        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+    <div style={{ paddingTop: '48px', paddingBottom: '48px', backgroundColor: 'white' }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <Typography
             variant="h2"
-            className="mb-4"
             sx={{
               fontWeight: 700,
               fontFamily: 'Montserrat, sans-serif',
+              fontSize: { xs: '1.75rem', md: '2.75rem' },
+              mb: { xs: 1.5, md: 2 },
             }}
           >
             How It Works
@@ -44,40 +45,45 @@ const HowItWorks = () => {
               color: '#6C757D',
               maxWidth: '700px',
               margin: '0 auto',
+              fontSize: { xs: '0.875rem', md: '1.25rem' },
             }}
           >
             A simple, streamlined process to find your perfect legal talent
           </Typography>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px', position: 'relative' }}>
           <div style={{ display: 'none', position: 'absolute', top: '96px', left: 0, right: 0, height: '4px', background: 'linear-gradient(to right, #DC143C, #FF4757, #DC143C)', opacity: 0.2, zIndex: 0 }} />
 
           {steps.map((step, index) => (
             <div key={index} style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '24px' }}>
+              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '16px' }}>
                 <div
                   style={{
-                    width: '96px',
-                    height: '96px',
+                    width: '72px',
+                    height: '72px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 16px',
+                    margin: '0 auto 12px',
                     position: 'relative',
                     background: 'linear-gradient(135deg, #DC143C 0%, #FF4757 100%)',
                   }}
                 >
-                  <div style={{ color: 'white' }}>{step.icon}</div>
+                  <div style={{ color: 'white' }}>
+                    <MessageSquare size={32} />
+                    <Search size={32} />
+                    <UserCheck size={32} />
+                  </div>
                 </div>
                 <div
                   style={{
                     position: 'absolute',
-                    top: '-16px',
-                    right: '-16px',
-                    width: '64px',
-                    height: '64px',
+                    top: '-12px',
+                    right: '-12px',
+                    width: '48px',
+                    height: '48px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -91,6 +97,7 @@ const HowItWorks = () => {
                     sx={{
                       fontWeight: 800,
                       fontFamily: 'Montserrat, sans-serif',
+                      fontSize: { xs: '0.875rem', md: '1.25rem' },
                     }}
                   >
                     {step.number}
@@ -103,7 +110,8 @@ const HowItWorks = () => {
                 sx={{
                   fontWeight: 600,
                   fontFamily: 'Montserrat, sans-serif',
-                  mb: 1.5,
+                  mb: 1,
+                  fontSize: { xs: '1.125rem', md: '1.5rem' },
                 }}
               >
                 {step.title}
@@ -113,6 +121,7 @@ const HowItWorks = () => {
                 sx={{
                   color: '#6C757D',
                   lineHeight: 1.7,
+                  fontSize: { xs: '0.875rem', md: '1rem' },
                 }}
               >
                 {step.description}
