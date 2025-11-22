@@ -1,4 +1,4 @@
-// File: C:\Akshay Project\Recruitement App\src\app\api\admin\submissions\route.js
+// File: c:\Akshay Project\Recruitement App\src\app\api\admin\submissions\route.js
 import * as entry from '../../../../../../src/app/api/admin/submissions/route.js'
 import type { NextRequest } from 'next/server.js'
 

@@ -1,4 +1,4 @@
-import Countries from '@/pages/Countries';
+import Countries from '@/components/Countries';
 
 export default function CountriesPage() {
   return <Countries />;

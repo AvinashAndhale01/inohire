@@ -1,4 +1,4 @@
-import Partner from '@/pages/Partner';
+import Partner from '@/components/Partner';
 
 export const dynamic = 'force-dynamic';
 

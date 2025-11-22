@@ -1,4 +1,4 @@
-import Contact from '@/pages/Contact';
+import Contact from '@/components/Contact';
 
 export const dynamic = 'force-dynamic';
 
