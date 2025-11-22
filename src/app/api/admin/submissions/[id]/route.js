@@ -11,14 +11,20 @@ export async function PUT(req, { params }) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { id } = params;
-    const { status } = await req.json();
+    const { id } = await params;
+    const body = await req.json();
+    const { status, note } = body;
 
     await connectDB();
 
+    const updateData = { status };
+    if (note !== undefined) {
+      updateData.note = note;
+    }
+
     const submission = await Submission.findByIdAndUpdate(
       id,
-      { status },
+      updateData,
       { new: true }
     );
 
@@ -41,7 +47,7 @@ export async function DELETE(req, { params }) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     await connectDB();
 

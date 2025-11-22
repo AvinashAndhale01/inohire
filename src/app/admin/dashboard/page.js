@@ -16,6 +16,7 @@ export default function AdminDashboard() {
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [statusNote, setStatusNote] = useState('');
   const [editingStatus, setEditingStatus] = useState(false);
+  const [savingNote, setSavingNote] = useState(false);
   const router = useRouter();
   const { message } = App.useApp();
 
@@ -343,8 +344,10 @@ export default function AdminDashboard() {
             editingStatus && (
               <Button 
                 key="save" 
-                type="primary" 
+                type="primary"
+                loading={savingNote}
                 onClick={async () => {
+                  setSavingNote(true);
                   const token = Cookies.get('admin_token');
                   try {
                     const response = await fetch(`/api/admin/submissions/${selectedRecord._id}`, {
@@ -353,7 +356,7 @@ export default function AdminDashboard() {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`,
                       },
-                      body: JSON.stringify({ note: statusNote }),
+                      body: JSON.stringify({ note: statusNote, status: selectedRecord.status }),
                     });
                     const data = await response.json();
                     if (data.success) {
@@ -365,6 +368,8 @@ export default function AdminDashboard() {
                     }
                   } catch (error) {
                     message.error('An error occurred');
+                  } finally {
+                    setSavingNote(false);
                   }
                 }}
               >

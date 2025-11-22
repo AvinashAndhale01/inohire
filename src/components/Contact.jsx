@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useSettings } from '@/lib/SettingsContext';
+import { useSettings } from "@/lib/SettingsContext";
 import Container from "@mui/material/Container";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -48,21 +48,22 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    
+
     // Phone validation (optional field, but validate if provided)
     if (formData.phone) {
-      const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
-      if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      const phoneRegex =
+        /^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+      if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
         newErrors.phone = "Please enter a valid phone number";
       }
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -233,104 +234,108 @@ const Contact = () => {
                 {activeForm === "inquiry" ? "Inquiry Form" : "Schedule a Call"}
               </Typography>
               {activeForm === "inquiry" ? (
-              <form onSubmit={handleSubmit}>
-                <Stack spacing={3}>
-                  <Box
-                    sx={{
-                      display: "grid",
-                      gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-                      gap: 2,
-                    }}
-                  >
+                <form onSubmit={handleSubmit}>
+                  <Stack spacing={3}>
+                    <Box
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+                        gap: 2,
+                      }}
+                    >
+                      <TextField
+                        label="Full Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        fullWidth
+                      />
+                      <TextField
+                        label="Email Address"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        fullWidth
+                        error={!!errors.email}
+                        helperText={errors.email}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+                        gap: 2,
+                      }}
+                    >
+                      <TextField
+                        label="Company Name"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        required
+                        fullWidth
+                      />
+                      <TextField
+                        label="Phone Number"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        fullWidth
+                        error={!!errors.phone}
+                        helperText={errors.phone}
+                      />
+                    </Box>
                     <TextField
-                      label="Full Name"
-                      name="name"
-                      value={formData.name}
+                      select
+                      label="Subject"
+                      name="subject"
+                      value={formData.subject}
                       onChange={handleChange}
                       required
                       fullWidth
-                    />
+                    >
+                      {subjects.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
                     <TextField
-                      label="Email Address"
-                      name="email"
-                      type="email"
-                      value={formData.email}
+                      label="Message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
                       required
-                      fullWidth
-                      error={!!errors.email}
-                      helperText={errors.email}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "grid",
-                      gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-                      gap: 2,
-                    }}
-                  >
-                    <TextField
-                      label="Company Name"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      required
+                      multiline
+                      rows={6}
                       fullWidth
                     />
-                    <TextField
-                      label="Phone Number"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      fullWidth
-                      error={!!errors.phone}
-                      helperText={errors.phone}
-                    />
-                  </Box>
-                  <TextField
-                    select
-                    label="Subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    fullWidth
-                  >
-                    {subjects.map((option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                  <TextField
-                    label="Message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    multiline
-                    rows={6}
-                    fullWidth
-                  />
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    disabled={loading}
-                    sx={{
-                      backgroundColor: "#DC143C",
-                      color: "#FFFFFF",
-                      fontWeight: 600,
-                      py: { xs: 1.25, md: 1.5 },
-                      fontSize: { xs: "0.95rem", md: "1rem" },
-                      "&:hover": { backgroundColor: "#B01030" },
-                    }}
-                  >
-                    {loading ? <CircularProgress size={24} color="inherit" /> : "Submit Inquiry"}
-                  </Button>
-                </Stack>
-              </form>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      disabled={loading}
+                      sx={{
+                        backgroundColor: "#DC143C",
+                        color: "#FFFFFF",
+                        fontWeight: 600,
+                        py: { xs: 1.25, md: 1.5 },
+                        fontSize: { xs: "0.95rem", md: "1rem" },
+                        "&:hover": { backgroundColor: "#B01030" },
+                      }}
+                    >
+                      {loading ? (
+                        <CircularProgress size={24} color="inherit" />
+                      ) : (
+                        "Submit Inquiry"
+                      )}
+                    </Button>
+                  </Stack>
+                </form>
               ) : (
                 <Box sx={{ textAlign: "center", py: 4 }}>
                   <Typography variant="body1" sx={{ mb: 3, color: "#6C757D" }}>
@@ -398,7 +403,7 @@ const Contact = () => {
                           fontSize: { xs: "0.8rem", md: "0.875rem" },
                         }}
                       >
-                        inohire78@gmail.com
+                        info@inohire.com
                       </Typography>
                       <Typography
                         variant="body2"
@@ -531,7 +536,10 @@ const Contact = () => {
           <Typography>Are you sure you want to submit this inquiry?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setConfirmOpen(false)} sx={{ color: "#6C757D" }}>
+          <Button
+            onClick={() => setConfirmOpen(false)}
+            sx={{ color: "#6C757D" }}
+          >
             Cancel
           </Button>
           <Button
@@ -549,7 +557,9 @@ const Contact = () => {
 
       {/* Success Dialog */}
       <Dialog open={successOpen} onClose={() => setSuccessOpen(false)}>
-        <DialogTitle sx={{ fontWeight: 600, color: "#28A745" }}>Success!</DialogTitle>
+        <DialogTitle sx={{ fontWeight: 600, color: "#28A745" }}>
+          Success!
+        </DialogTitle>
         <DialogContent>
           <Alert severity="success" sx={{ mb: 2 }}>
             Thank you for your inquiry!
