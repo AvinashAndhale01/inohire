@@ -16,38 +16,38 @@ const CountriesCarousel = () => {
     {
       name: "Europe",
       description:
-        "Cross-border hiring across EU member states with multilingual legal professionals",
-      flag: "🇪🇺",
+        "Trusted recruitment support across the EU with compliant cross-border talent.",
+      flagCode: "eu",
     },
     {
       name: "United Kingdom",
       description:
-        "Solicitors, barristers, and in-house counsel for UK law firms and corporations",
-      flag: "🇬🇧",
+        "Specialized hiring solutions for UK businesses with market-aligned professionals.",
+      flagCode: "gb",
     },
     {
-      name: "UAE",
+      name: "United Arab Emirates",
       description:
-        "GCC law expertise for Freezone and local company legal requirements",
-      flag: "🇦🇪",
+        "End-to-end recruitment for UAE and GCC companies across all industries.",
+      flagCode: "ae",
     },
     {
       name: "Singapore",
       description:
-        "APAC regional legal talent with bilingual capabilities and regulatory knowledge",
-      flag: "🇸🇬",
+        "Reliable hiring for Singapore's fast-growing tech and business ecosystem.",
+      flagCode: "sg",
     },
     {
-      name: "USA",
+      name: "United States",
       description:
-        "State-licensed attorneys and legal professionals across all 50 states",
-      flag: "🇺🇸",
+        "High-quality talent sourcing across the U.S. with compliance expertise.",
+      flagCode: "us",
     },
     {
       name: "Canada",
       description:
-        "Bilingual legal professionals with provincial law expertise",
-      flag: "🇨🇦",
+        "Professional recruitment tailored to the Canadian market and standards.",
+      flagCode: "ca",
     },
   ];
 
@@ -122,9 +122,9 @@ const CountriesCarousel = () => {
             <div
               style={{
                 display: "flex",
-                gap: itemsPerView === 1 ? "0" : "16px",
+                gap: "16px",
                 transition: "transform 0.5s ease-in-out",
-                transform: `translateX(-${currentIndex * 100}%)`,
+                transform: `translateX(-${(currentIndex * (100 + 16)) / itemsPerView}%)`,
               }}
             >
               {countries.map((country, index) => (
@@ -132,13 +132,7 @@ const CountriesCarousel = () => {
                   key={index}
                   style={{
                     flexShrink: 0,
-                    width:
-                      itemsPerView === 1
-                        ? "100%"
-                        : `calc(${100 / itemsPerView}% - ${
-                            (16 * (itemsPerView - 1)) / itemsPerView
-                          }px)`,
-                    paddingRight: itemsPerView === 1 ? "0" : "0",
+                    width: `calc(${100 / itemsPerView}% - ${16 * (itemsPerView - 1) / itemsPerView}px)`,
                   }}
                 >
                   <Card
@@ -157,8 +151,13 @@ const CountriesCarousel = () => {
                     <CardContent
                       sx={{ p: { xs: 2.5, md: 3 }, textAlign: "center" }}
                     >
-                      <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>
-                        {country.flag}
+                      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                        <img 
+                          src={`https://flagcdn.com/w80/${country.flagCode}.png`}
+                          srcSet={`https://flagcdn.com/w160/${country.flagCode}.png 2x`}
+                          alt={`${country.name} flag`}
+                          style={{ width: '80px', height: '60px', objectFit: 'cover', border: '1px solid #E5E7EB', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}
+                        />
                       </div>
                       <Typography
                         variant="h5"

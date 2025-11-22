@@ -9,8 +9,8 @@ import Button from "@mui/material/Button";
 import {
   Briefcase,
   Users,
-  FileText,
-  Building2,
+  Search,
+  Globe2,
   ArrowRight,
 } from "lucide-react";
 
@@ -18,30 +18,30 @@ const ServicesOverview = () => {
   const services = [
     {
       icon: <Briefcase size={40} />,
-      title: "Legal Recruitment",
+      title: "End-to-End Talent Acquisition",
       description:
-        "Connect with top legal professionals for permanent positions in law firms and corporate legal departments.",
+        "Complete hiring support from sourcing to final selection, ensuring high-quality, reliable talent for every role.",
       color: "#DC143C",
     },
     {
       icon: <Users size={40} />,
-      title: "International Hiring Solutions",
+      title: "Specialist Recruitment",
       description:
-        "Navigate cross-border hiring with our expertise in global legal talent acquisition and compliance.",
+        "Targeted hiring for niche and high-demand skill areas backed by deep market expertise and global talent reach.",
       color: "#FF4757",
     },
     {
-      icon: <FileText size={40} />,
-      title: "Contract & Temporary Legal Talent",
+      icon: <Search size={40} />,
+      title: "Executive Search & Leadership Hiring",
       description:
-        "Access skilled contract attorneys and paralegals for short-term projects and seasonal demands.",
+        "Premium headhunting for CXO, VP, Director, and senior leadership positions with confidentiality and precision.",
       color: "#DC143C",
     },
     {
-      icon: <Building2 size={40} />,
-      title: "In-house Legal Team Building",
+      icon: <Globe2 size={40} />,
+      title: "Global Recruitment Support",
       description:
-        "Build and scale your corporate legal function with strategic hiring and team development.",
+        "Cross-border hiring solutions for companies scaling across markets, ensuring compliance, accuracy, and cultural alignment.",
       color: "#FF4757",
     },
   ];

@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Table, Card, Button, Tag, Space, Layout, Popconfirm, App } from 'antd';
-import { LogoutOutlined, UserOutlined, MailOutlined, PhoneOutlined, SettingOutlined, CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Table, Card, Button, Tag, Space, Layout, Popconfirm, App, Modal, Input } from 'antd';
+import { LogoutOutlined, UserOutlined, MailOutlined, PhoneOutlined, SettingOutlined, CheckOutlined, DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
 
 const { Header, Content } = Layout;
@@ -10,6 +10,12 @@ const { Header, Content } = Layout;
 export default function AdminDashboard() {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [emailModalVisible, setEmailModalVisible] = useState(false);
+  const [messageModalVisible, setMessageModalVisible] = useState(false);
+  const [statusModalVisible, setStatusModalVisible] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState(null);
+  const [statusNote, setStatusNote] = useState('');
+  const [editingStatus, setEditingStatus] = useState(false);
   const router = useRouter();
   const { message } = App.useApp();
 
@@ -103,21 +109,7 @@ export default function AdminDashboard() {
   };
 
   const columns = [
-    {
-      title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
-      width: 100,
-      render: (type) => (
-        <Tag color="blue">
-          {type.toUpperCase()}
-        </Tag>
-      ),
-      filters: [
-        { text: 'Inquiry', value: 'inquiry' },
-      ],
-      onFilter: (value, record) => record.type === value,
-    },
+
     {
       title: 'Name',
       dataIndex: 'name',
@@ -132,21 +124,26 @@ export default function AdminDashboard() {
     },
     {
       title: 'Email',
-      dataIndex: 'email',
       key: 'email',
-      width: 200,
-      render: (text) => (
-        <Space>
-          <MailOutlined />
-          {text}
-        </Space>
+      width: 120,
+      render: (_, record) => (
+        <Button 
+          type="link" 
+          icon={<MailOutlined />}
+          onClick={() => {
+            setSelectedRecord(record);
+            setEmailModalVisible(true);
+          }}
+        >
+          Show Email
+        </Button>
       ),
     },
     {
       title: 'Company',
       dataIndex: 'company',
       key: 'company',
-      width: 150,
+      width: 200,
     },
     {
       title: 'Phone',
@@ -168,25 +165,50 @@ export default function AdminDashboard() {
     },
     {
       title: 'Message',
-      dataIndex: 'message',
       key: 'message',
-      ellipsis: true,
+      width: 120,
+      render: (_, record) => (
+        <Button 
+          type="link"
+          onClick={() => {
+            setSelectedRecord(record);
+            setMessageModalVisible(true);
+          }}
+        >
+          Show Message
+        </Button>
+      ),
     },
     {
       title: 'Status',
-      dataIndex: 'status',
       key: 'status',
-      width: 120,
-      render: (status) => (
-        <Tag color={status === 'completed' ? 'green' : 'orange'}>
-          {status === 'completed' ? 'COMPLETED' : 'PENDING'}
-        </Tag>
+      width: 200,
+      render: (_, record) => (
+        <Space>
+          <Tag color={record.status === 'completed' ? 'green' : 'orange'}>
+            {record.status === 'completed' ? 'COMPLETED' : 'PENDING'}
+          </Tag>
+          <Button 
+            size="small" 
+            icon={<EditOutlined />}
+            onClick={() => {
+              setSelectedRecord(record);
+              setStatusNote(record.note || '');
+              setEditingStatus(true);
+              setStatusModalVisible(true);
+            }}
+          />
+          <Button 
+            size="small" 
+            icon={<EyeOutlined />}
+            onClick={() => {
+              setSelectedRecord(record);
+              setEditingStatus(false);
+              setStatusModalVisible(true);
+            }}
+          />
+        </Space>
       ),
-      filters: [
-        { text: 'Pending', value: 'pending' },
-        { text: 'Completed', value: 'completed' },
-      ],
-      onFilter: (value, record) => record.status === value,
     },
     {
       title: 'Date',
@@ -200,7 +222,7 @@ export default function AdminDashboard() {
     {
       title: 'Actions',
       key: 'actions',
-      width: 150,
+      width: 100,
       fixed: 'right',
       render: (_, record) => (
         <Space>
@@ -210,9 +232,7 @@ export default function AdminDashboard() {
               size="small"
               icon={<CheckOutlined />}
               onClick={() => handleComplete(record._id)}
-            >
-              Complete
-            </Button>
+            />
           )}
           <Popconfirm
             title="Delete submission"
@@ -225,9 +245,7 @@ export default function AdminDashboard() {
               danger
               size="small"
               icon={<DeleteOutlined />}
-            >
-              Delete
-            </Button>
+            />
           </Popconfirm>
         </Space>
       ),
@@ -284,9 +302,90 @@ export default function AdminDashboard() {
               showSizeChanger: true,
               showTotal: (total) => `Total ${total} submissions`,
             }}
-            scroll={{ x: 1200 }}
+            scroll={{ x: 1000 }}
           />
         </Card>
+        
+        <Modal
+          title="Email"
+          open={emailModalVisible}
+          onCancel={() => setEmailModalVisible(false)}
+          footer={[
+            <Button key="close" onClick={() => setEmailModalVisible(false)}>
+              Close
+            </Button>
+          ]}
+        >
+          <p>{selectedRecord?.email}</p>
+        </Modal>
+
+        <Modal
+          title="Message"
+          open={messageModalVisible}
+          onCancel={() => setMessageModalVisible(false)}
+          footer={[
+            <Button key="close" onClick={() => setMessageModalVisible(false)}>
+              Close
+            </Button>
+          ]}
+        >
+          <p style={{ whiteSpace: 'pre-wrap' }}>{selectedRecord?.message}</p>
+        </Modal>
+
+        <Modal
+          title={editingStatus ? "Edit Status Note" : "Status Note"}
+          open={statusModalVisible}
+          onCancel={() => setStatusModalVisible(false)}
+          footer={[
+            <Button key="close" onClick={() => setStatusModalVisible(false)}>
+              Close
+            </Button>,
+            editingStatus && (
+              <Button 
+                key="save" 
+                type="primary" 
+                onClick={async () => {
+                  const token = Cookies.get('admin_token');
+                  try {
+                    const response = await fetch(`/api/admin/submissions/${selectedRecord._id}`, {
+                      method: 'PUT',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                      },
+                      body: JSON.stringify({ note: statusNote }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                      message.success('Note updated');
+                      fetchSubmissions();
+                      setStatusModalVisible(false);
+                    } else {
+                      message.error('Failed to update note');
+                    }
+                  } catch (error) {
+                    message.error('An error occurred');
+                  }
+                }}
+              >
+                Save
+              </Button>
+            )
+          ]}
+        >
+          {editingStatus ? (
+            <Input.TextArea
+              value={statusNote}
+              onChange={(e) => setStatusNote(e.target.value)}
+              placeholder="Add a note..."
+              rows={4}
+            />
+          ) : (
+            <p style={{ whiteSpace: 'pre-wrap' }}>
+              {selectedRecord?.note || 'No note available'}
+            </p>
+          )}
+        </Modal>
       </Content>
     </Layout>
   );

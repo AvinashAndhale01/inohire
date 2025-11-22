@@ -1,6 +1,6 @@
-'use client';
+"use client";
 import Link from "next/link";
-import { useSettings } from '@/lib/SettingsContext';
+import { useSettings } from "@/lib/SettingsContext";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -10,7 +10,7 @@ import WorldMap from "./WorldMap";
 
 const HeroSection = () => {
   const { calendlyUrl } = useSettings();
-  
+
   return (
     <div
       style={{
@@ -78,8 +78,10 @@ const HeroSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              Global Legal Hiring{" "}
-              <span style={{ color: "#DC143C" }}>Made Simple</span>
+              Helping Companies Hire Top Talent{" "}
+              <span style={{ color: "#DC143C" }}>
+                With Speed, Accuracy & Trust
+              </span>
             </Typography>
 
             <Typography
@@ -92,8 +94,9 @@ const HeroSection = () => {
                 mb: { xs: 2, md: 4 },
               }}
             >
-              Hire vetted lawyers, paralegals and compliance experts across
-              Europe, the UK, UAE, Singapore, USA & Canada.
+              We help companies hire top talent quickly and accurately through a
+              trusted, high-quality recruitment process. Our global network
+              ensures every role is matched with the right professional.
             </Typography>
 
             <Stack

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSettings } from '@/lib/SettingsContext';
+import { useSettings } from "@/lib/SettingsContext";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -34,7 +34,7 @@ const Navbar = () => {
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "Services", path: "/services" },
-    { label: "Pricing", path: "/pricing" },
+    { label: "Specialization", path: "/pricing" },
     { label: "Partner", path: "/partner" },
     { label: "Contact", path: "/contact" },
   ];
