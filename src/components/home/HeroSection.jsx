@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+'use client';
+import Link from "next/link";
+import { useSettings } from '@/lib/SettingsContext';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Chip from "@mui/material/Chip";
 import { Shield, Award } from "lucide-react";
 import WorldMap from "./WorldMap";
-import heroimage from "../images/heroimage.jpg";
 
 const HeroSection = () => {
+  const { calendlyUrl } = useSettings();
+  
   return (
     <div
       style={{
@@ -30,7 +32,7 @@ const HeroSection = () => {
           position: "absolute",
           inset: 0,
           opacity: 0.2,
-          backgroundImage: `url(${heroimage})`,
+          backgroundImage: `url(/heroimage.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -38,7 +40,12 @@ const HeroSection = () => {
 
       <Container
         maxWidth="xl"
-        sx={{ position: "relative", zIndex: 10, py: { xs: 6, sm: 8, md: 12 }, px: { xs: 2, sm: 3 } }}
+        sx={{
+          position: "relative",
+          zIndex: 10,
+          py: { xs: 6, sm: 8, md: 12 },
+          px: { xs: 2, sm: 3 },
+        }}
       >
         <style>{`
           @media (min-width: 1024px) {
@@ -46,12 +53,25 @@ const HeroSection = () => {
             .worldmap-container { display: block !important; }
           }
         `}</style>
-        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "64px", alignItems: "center" }}>
-            <div style={{ color: "white", maxWidth: "100%" }}>
+        <div
+          className="hero-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "64px",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ color: "white", maxWidth: "100%" }}>
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
+                fontSize: {
+                  xs: "1.75rem",
+                  sm: "2.5rem",
+                  md: "3.5rem",
+                  lg: "4rem",
+                },
                 fontWeight: 800,
                 fontFamily: "Montserrat, sans-serif",
                 mb: { xs: 1.5, md: 3 },
@@ -79,41 +99,12 @@ const HeroSection = () => {
             <Stack
               direction="row"
               spacing={1}
-              sx={{ mb: { xs: 2, md: 4 }, flexWrap: "wrap", gap: { xs: 0.5, md: 0.75 } }}
-            >
-              <Chip
-                icon={<Shield size={12} />}
-                label="GDPR Compliant"
-                sx={{
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  fontSize: { xs: "0.7rem", md: "0.875rem" },
-                  height: { xs: "22px", md: "32px" },
-                  "& .MuiChip-icon": {
-                    fontSize: { xs: "12px", md: "14px" }
-                  }
-                }}
-              />
-              <Chip
-                icon={<Award size={12} />}
-                label="ISO Certified"
-                sx={{
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  color: "#FFFFFF",
-                  fontWeight: 500,
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  fontSize: { xs: "0.7rem", md: "0.875rem" },
-                  height: { xs: "22px", md: "32px" },
-                  "& .MuiChip-icon": {
-                    fontSize: { xs: "12px", md: "14px" }
-                  }
-                }}
-              />
-            </Stack>
+              sx={{
+                mb: { xs: 2, md: 4 },
+                flexWrap: "wrap",
+                gap: { xs: 0.5, md: 0.75 },
+              }}
+            ></Stack>
 
             <Stack
               direction={{ xs: "column", sm: "row" }}
@@ -122,8 +113,10 @@ const HeroSection = () => {
             >
               <Button
                 variant="contained"
-                component={Link}
-                to="/contact"
+                component="a"
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 fullWidth
                 sx={{
                   backgroundColor: "#DC143C",
@@ -141,12 +134,12 @@ const HeroSection = () => {
                   transition: "all 0.3s ease",
                 }}
               >
-                Book a Consultation
+                Schedule Call
               </Button>
               <Button
                 variant="outlined"
                 component={Link}
-                to="/partner"
+                href="/partner"
                 fullWidth
                 sx={{
                   borderColor: "#FFFFFF",

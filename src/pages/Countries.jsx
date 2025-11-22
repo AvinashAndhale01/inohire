@@ -3,16 +3,17 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Countries = () => {
   const countries = [
-    { name: 'Europe', flag: '🇪🇺', description: 'Cross-border hiring across EU member states' },
-    { name: 'United Kingdom', flag: '🇬🇧', description: 'Solicitors and barristers for UK law firms' },
-    { name: 'UAE', flag: '🇦🇪', description: 'GCC law expertise and Freezone hiring' },
-    { name: 'Singapore', flag: '🇸🇬', description: 'APAC regional legal talent' },
-    { name: 'USA', flag: '🇺🇸', description: 'State-licensed attorneys across all 50 states' },
-    { name: 'Canada', flag: '🇨🇦', description: 'Bilingual legal professionals' },
+    { name: 'Europe', flagCode: 'eu', description: 'Trusted recruitment support across the EU with compliant cross-border talent.' },
+    { name: 'United Kingdom', flagCode: 'gb', description: 'Specialized hiring solutions for UK businesses with market-aligned professionals.' },
+    { name: 'United Arab Emirates', flagCode: 'ae', description: 'End-to-end recruitment for UAE and GCC companies across all industries.' },
+    { name: 'Singapore', flagCode: 'sg', description: 'Reliable hiring for Singapore\'s fast-growing tech and business ecosystem.' },
+    { name: 'United States', flagCode: 'us', description: 'High-quality talent sourcing across the U.S. with compliance expertise.' },
+    { name: 'Canada', flagCode: 'ca', description: 'Professional recruitment tailored to the Canadian market and standards.' },
   ];
 
   return (
@@ -29,10 +30,17 @@ const Countries = () => {
           {countries.map((country, index) => (
             <Card key={index} sx={{ height: '100%', borderRadius: '16px', border: '2px solid #E5E7EB', transition: 'all 0.3s ease', '&:hover': { borderColor: '#DC143C', transform: 'translateY(-8px)', boxShadow: '0 16px 32px rgba(0,0,0,0.14)' } }}>
               <CardContent sx={{ p: { xs: 2.5, md: 4 }, textAlign: 'center' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>{country.flag}</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                  <img 
+                    src={`https://flagcdn.com/w80/${country.flagCode}.png`}
+                    srcSet={`https://flagcdn.com/w160/${country.flagCode}.png 2x`}
+                    alt={`${country.name} flag`}
+                    style={{ width: '80px', height: '60px', objectFit: 'cover', border: '1px solid #E5E7EB', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}
+                  />
+                </div>
                 <Typography variant="h5" sx={{ fontWeight: 600, mb: 1.5, fontSize: { xs: '1.125rem', md: '1.5rem' } }}>{country.name}</Typography>
                 <Typography variant="body2" sx={{ color: '#6C757D', mb: 2, fontSize: { xs: '0.8rem', md: '0.875rem' } }}>{country.description}</Typography>
-                <Button component={Link} to="/contact" variant="outlined" sx={{ borderColor: '#DC143C', color: '#DC143C' }}>
+                <Button component={Link} href="/contact" variant="outlined" sx={{ borderColor: '#DC143C', color: '#DC143C' }}>
                   Learn More
                 </Button>
               </CardContent>

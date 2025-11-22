@@ -1,64 +1,220 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
-import { Check } from 'lucide-react';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Link from "next/link";
+import {
+  Check,
+  DollarSign,
+  Brain,
+  Code,
+  TrendingUp,
+  Scale,
+} from "lucide-react";
 
 const Pricing = () => {
-  const models = [
+  const industries = [
     {
-      title: 'Cost-per-Hire',
-      description: 'Fixed fee per successful placement',
-      features: ['Scalable pricing', 'Pay only for results', 'No upfront costs', 'Flexible hiring volumes'],
-      pricing: 'From $499 per hire',
+      icon: <DollarSign size={48} />,
+      title: "Finance & Accounting",
+      description: "We assist organizations in hiring skilled:",
+      roles: [
+        "Accountants",
+        "Financial Analysts",
+        "Auditors",
+        "Payroll Specialists",
+        "Tax & Compliance Professionals",
+      ],
     },
     {
-      title: 'Cost-per-Resource',
-      description: 'Monthly fee for dedicated resources',
-      features: ['Dedicated recruiter', 'Ongoing support', 'Priority service', 'Predictable costs'],
-      pricing: 'From $1,500/month',
+      icon: <Brain size={48} />,
+      title: "Artificial Intelligence (AI)",
+      description: "We provide vetted AI talent, including:",
+      roles: [
+        "AI Engineers",
+        "Data Scientists",
+        "Machine Learning Engineers",
+        "MLOps Engineers",
+        "AI Product Managers",
+      ],
     },
     {
-      title: 'Hybrid Model',
-      description: 'Combination of per-hire and resource fees',
-      features: ['Best of both models', 'Volume discounts', 'Dedicated support', 'Custom solutions'],
-      pricing: 'Custom pricing',
+      icon: <Code size={48} />,
+      title: "Technology",
+      description: "We support companies with key tech roles such as:",
+      roles: [
+        "Software Developers",
+        "Cloud Engineers",
+        "DevOps Engineers",
+        "Cybersecurity Specialists",
+        "Full-Stack Developers",
+      ],
+    },
+    {
+      icon: <TrendingUp size={48} />,
+      title: "Marketing",
+      description: "We help businesses scale their growth teams with:",
+      roles: [
+        "Digital Marketers",
+        "SEO/SEM Specialists",
+        "Social Media Managers",
+        "Content Strategists",
+        "Brand Managers",
+      ],
+    },
+    {
+      icon: <Scale size={48} />,
+      title: "Legal",
+      description: "We deliver experienced legal professionals, from:",
+      roles: [
+        "Paralegals",
+        "Legal Assistants",
+        "Corporate Lawyers",
+        "Compliance Officers",
+        "General Counsel (GC)",
+      ],
     },
   ];
 
   return (
     <div>
-      <div style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)' }}>
+      <div
+        style={{
+          paddingTop: "64px",
+          paddingBottom: "64px",
+          background: "linear-gradient(135deg, #000000 0%, #1a1a1a 100%)",
+        }}
+      >
         <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
-          <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 800, color: 'white', textAlign: 'center', mb: 3 }}>
-            Flexible <span style={{ color: '#DC143C' }}>Pricing</span>
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              fontWeight: 800,
+              color: "white",
+              textAlign: "center",
+              mb: 3,
+            }}
+          >
+            <span style={{ color: "#DC143C" }}>Industries</span> We Specialize
+            In
           </Typography>
-          <Typography variant="h5" sx={{ color: 'rgba(255,255,255,0.8)', textAlign: 'center', maxWidth: '800px', mx: 'auto' }}>
-            Choose the pricing model that works best for your hiring needs
+          <Typography
+            variant="h5"
+            sx={{
+              color: "rgba(255,255,255,0.8)",
+              textAlign: "center",
+              maxWidth: "900px",
+              mx: "auto",
+              lineHeight: 1.6,
+            }}
+          >
+            At InoHire, we help companies hire top talent across five
+            high-demand sectors, offering end-to-end recruitment support with
+            speed, accuracy, and confidentiality.
           </Typography>
         </Container>
       </div>
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 12 }, px: { xs: 2, sm: 3 } }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-          {models.map((model, index) => (
-            <Card key={index} sx={{ height: '100%', borderRadius: '16px', border: '2px solid #E5E7EB', transition: 'all 0.3s ease', '&:hover': { borderColor: '#DC143C', transform: 'translateY(-8px)', boxShadow: '0 16px 32px rgba(0,0,0,0.14)' } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 12 }, px: { xs: 2, sm: 3 } }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          {industries.map((industry, index) => (
+            <Card
+              key={index}
+              sx={{
+                height: "100%",
+                borderRadius: "16px",
+                border: "2px solid #E5E7EB",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  borderColor: "#DC143C",
+                  transform: "translateY(-8px)",
+                  boxShadow: "0 16px 32px rgba(0,0,0,0.14)",
+                },
+              }}
+            >
               <CardContent sx={{ p: { xs: 2.5, md: 4 } }}>
-                <Typography variant="h5" sx={{ fontWeight: 600, mb: 1.5, fontSize: { xs: '1.125rem', md: '1.5rem' } }}>{model.title}</Typography>
-                <Typography variant="body2" sx={{ color: '#6C757D', mb: 3, fontSize: { xs: '0.8rem', md: '0.875rem' } }}>{model.description}</Typography>
-                <Typography variant="h3" sx={{ color: '#DC143C', fontWeight: 700, mb: 4, fontSize: { xs: '1.5rem', md: '2.5rem' } }}>{model.pricing}</Typography>
-                <Stack spacing={2} sx={{ mb: 4 }}>
-                  {model.features.map((feature, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Check size={20} style={{ color: '#28A745', flexShrink: 0 }} />
-                      <Typography variant="body2" sx={{ fontSize: { xs: '0.8rem', md: '0.875rem' } }}>{feature}</Typography>
+                <div style={{ color: "#DC143C", marginBottom: "16px" }}>
+                  {industry.icon}
+                </div>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 600,
+                    mb: 2,
+                    fontSize: { xs: "1.25rem", md: "1.5rem" },
+                  }}
+                >
+                  {industry.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "#495057",
+                    mb: 2,
+                    fontSize: { xs: "0.875rem", md: "0.95rem" },
+                    fontWeight: 500,
+                  }}
+                >
+                  {industry.description}
+                </Typography>
+                <Stack spacing={1} sx={{ mb: 3 }}>
+                  {industry.roles.map((role, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: "8px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "4px",
+                          height: "4px",
+                          borderRadius: "50%",
+                          backgroundColor: "#DC143C",
+                          marginTop: "8px",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#6C757D",
+                          fontSize: { xs: "0.8rem", md: "0.875rem" },
+                        }}
+                      >
+                        {role}
+                      </Typography>
                     </div>
                   ))}
                 </Stack>
-                <Button component={Link} to="/contact" variant="contained" fullWidth sx={{ backgroundColor: '#DC143C', '&:hover': { backgroundColor: '#B01030' } }}>
-                  Get Started
+                <Button
+                  component={Link}
+                  href="/contact"
+                  variant="outlined"
+                  fullWidth
+                  sx={{
+                    borderColor: "#DC143C",
+                    color: "#DC143C",
+                    "&:hover": {
+                      borderColor: "#B01030",
+                      backgroundColor: "rgba(220, 20, 60, 0.05)",
+                    },
+                  }}
+                >
+                  Learn More
                 </Button>
               </CardContent>
             </Card>

@@ -1,5 +1,8 @@
+"use client";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSettings } from '@/lib/SettingsContext';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -13,7 +16,8 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
+  const { calendlyUrl } = useSettings();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,14 +29,12 @@ const Navbar = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "Services", path: "/services" },
-    { label: "Countries", path: "/countries" },
     { label: "Pricing", path: "/pricing" },
-    { label: "About", path: "/about" },
     { label: "Partner", path: "/partner" },
     { label: "Contact", path: "/contact" },
   ];
@@ -62,9 +64,10 @@ const Navbar = () => {
         <Container maxWidth="xl">
           <Toolbar className="py-1 md:py-2" disableGutters>
             <Link
-              to="/"
+              href="/"
               onClick={handleNavClick}
               className="flex items-center no-underline"
+              style={{ textDecoration: "none" }}
             >
               <Typography
                 variant="h5"
@@ -96,12 +99,11 @@ const Navbar = () => {
                 <Button
                   key={link.path}
                   component={Link}
-                  to={link.path}
+                  href={link.path}
                   onClick={handleNavClick}
                   sx={{
-                    color:
-                      location.pathname === link.path ? "#DC143C" : "#000000",
-                    fontWeight: location.pathname === link.path ? 600 : 500,
+                    color: pathname === link.path ? "#DC143C" : "#000000",
+                    fontWeight: pathname === link.path ? 600 : 500,
                     fontSize: { xs: "0.875rem", md: "0.95rem" },
                     px: { xs: 1.5, md: 2 },
                     "&:hover": {
@@ -115,9 +117,10 @@ const Navbar = () => {
               ))}
               <Button
                 variant="contained"
-                component={Link}
-                to="/contact"
-                onClick={handleNavClick}
+                component="a"
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   ml: { xs: 1, md: 2 },
                   backgroundColor: "#DC143C",
@@ -132,7 +135,7 @@ const Navbar = () => {
                   },
                 }}
               >
-                Book Consultation
+                Schedule Call
               </Button>
             </Stack>
 
@@ -174,10 +177,10 @@ const Navbar = () => {
           >
             <Typography
               variant="h6"
-              sx={{ 
-                fontFamily: "Montserrat, sans-serif", 
+              sx={{
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 700,
-                fontSize: { xs: "1rem", sm: "1.25rem" }
+                fontSize: { xs: "1rem", sm: "1.25rem" },
               }}
             >
               Inno<span style={{ color: "#DC143C" }}>Hire</span>
@@ -190,12 +193,12 @@ const Navbar = () => {
             <Button
               key={link.path}
               component={Link}
-              to={link.path}
+              href={link.path}
               onClick={handleNavClick}
               sx={{
                 justifyContent: "flex-start",
-                color: location.pathname === link.path ? "#DC143C" : "#000000",
-                fontWeight: location.pathname === link.path ? 600 : 500,
+                color: pathname === link.path ? "#DC143C" : "#000000",
+                fontWeight: pathname === link.path ? 600 : 500,
                 fontSize: { xs: "0.875rem", sm: "1rem" },
                 py: { xs: 1.25, sm: 1.5 },
                 px: { xs: 1.5, sm: 2 },
@@ -212,7 +215,7 @@ const Navbar = () => {
           <Button
             variant="contained"
             component={Link}
-            to="/contact"
+            href="/contact"
             onClick={handleNavClick}
             sx={{
               mt: 2,
