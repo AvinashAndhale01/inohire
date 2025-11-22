@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const NotFound = () => {
   return (
@@ -11,7 +11,7 @@ const NotFound = () => {
       <Typography variant="body1" sx={{ color: '#6C757D', mb: 4 }}>
         The page you're looking for doesn't exist or has been moved.
       </Typography>
-      <Button component={Link} to="/" variant="contained" sx={{ backgroundColor: '#DC143C', '&:hover': { backgroundColor: '#B01030' } }}>
+      <Button component={Link} href="/" variant="contained" sx={{ backgroundColor: '#DC143C', '&:hover': { backgroundColor: '#B01030' } }}>
         Go Home
       </Button>
     </Container>
