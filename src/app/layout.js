@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <title>InoHire - Global Recruitment Solutions</title>
         <meta
           name="description"
-          content="Global recruitment consultancy specializing in AI, Technology, Finance, Marketing, and Legal roles. Fast, accurate, and confidential hiring solutions."
+          content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process. Our global network ensures every role is matched with the right professional."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -30,15 +30,15 @@ export default function RootLayout({ children }) {
         {/* Open Graph Meta Tags */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="InoHire - Global Recruitment Solutions" />
-        <meta property="og:description" content="Expert recruitment solutions for AI, Technology, Finance, Marketing, and Legal roles. Fast, accurate, and confidential hiring support." />
+        <meta property="og:description" content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process. Our global network ensures every role is matched with the right professional." />
         <meta property="og:image" content="/inohirelogo.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="400" />
         
         {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="InoHire - Global Recruitment Solutions" />
-        <meta name="twitter:description" content="Expert recruitment solutions for AI, Technology, Finance, Marketing, and Legal roles." />
+        <meta name="twitter:description" content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process." />
         <meta name="twitter:image" content="/inohirelogo.png" />
       </head>
       <body suppressHydrationWarning>
