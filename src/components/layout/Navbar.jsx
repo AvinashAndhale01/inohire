@@ -81,7 +81,7 @@ const Navbar = () => {
                   fontSize: { xs: "1.125rem", md: "1.5rem" },
                 }}
               >
-                Inno <span style={{ color: "#DC143C" }}>Hire</span>
+                Ino <span style={{ color: "#DC143C" }}>Hire</span>
               </Typography>
             </Link>
 
