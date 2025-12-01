@@ -26,20 +26,32 @@ export default function RootLayout({ children }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        
+
         {/* Open Graph Meta Tags */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="InoHire - Global Recruitment Solutions" />
-        <meta property="og:description" content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process. Our global network ensures every role is matched with the right professional." />
+        <meta
+          property="og:title"
+          content="InoHire - Global Recruitment Solutions"
+        />
+        <meta
+          property="og:description"
+          content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process. Our global network ensures every role is matched with the right professional."
+        />
         <meta property="og:image" content="/inohirelogo.png" />
-        <meta property="og:image:width" content="200" />
-        <meta property="og:image:height" content="200" />
+        <meta property="og:image:width" content="100" />
+        <meta property="og:image:height" content="100" />
         <meta property="og:image:type" content="image/png" />
-        
+
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="InoHire - Global Recruitment Solutions" />
-        <meta name="twitter:description" content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process." />
+        <meta
+          name="twitter:title"
+          content="InoHire - Global Recruitment Solutions"
+        />
+        <meta
+          name="twitter:description"
+          content="We help companies hire top talent quickly and accurately through a trusted, high-quality recruitment process."
+        />
         <meta name="twitter:image" content="/inohirelogo.png" />
         <meta name="twitter:image:alt" content="InoHire Logo" />
       </head>
